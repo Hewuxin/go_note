@@ -90,44 +90,80 @@
 // 	}
 // }
 
+// package main
+
+// import (
+// 	"fmt"
+// 	"math/rand"
+// 	"time"
+// )
+
+// var era = "AD"
+
+// func main() {
+// 	randomdate_show()
+
+// }
+
+// func randomdate_show() {
+// 	for count := 10; count > 0; count-- {
+// 		// year := 2018
+// 		rand.Seed(time.Now().Unix())
+// 		year := rand.Intn(22) + 2001
+// 		month := rand.Intn(12) + 1
+// 		daysInmonth := 31
+
+// 		switch month {
+// 		case 2:
+// 			if year%400 == 0 || (year%4 == 0 && year%100 != 0) {
+// 				fmt.Printf("%v is leap year \n", year)
+// 				daysInmonth = 29
+// 			} else {
+// 				daysInmonth = 28
+// 			}
+
+// 		case 4, 6, 9, 11:
+// 			daysInmonth = 30
+
+// 		}
+// 		day := rand.Intn(daysInmonth) + 1
+// 		fmt.Println(era, year, month, day)
+// 		time.Sleep(time.Millisecond * 500)
+// 	}
+// }
+// package main
+
+// import "fmt"
+
+// func main() {
+// 	name := "heyuyang"
+// 	nickname := name
+
+// 	fmt.Println(name, &name)
+// 	name = "hewuxin"
+// 	fmt.Println(name, &name)
+// 	fmt.Println(nickname, &nickname)
+// }
+
 package main
 
-import (
-	"fmt"
-	"math/rand"
-	"time"
-)
+import "fmt"
 
-var era = "AD"
+var number = 99
 
 func main() {
-	randomdate_show()
+	var name string
+	fmt.Print("请输入姓名")
+	fmt.Scanln(&name)
 
-}
-
-func randomdate_show() {
-	for count := 10; count > 0; count-- {
-		// year := 2018
-		rand.Seed(time.Now().Unix())
-		year := rand.Intn(22) + 2001
-		month := rand.Intn(12) + 1
-		daysInmonth := 31
-
-		switch month {
-		case 2:
-			if year%400 == 0 || (year%4 == 0 && year%100 != 0) {
-				fmt.Printf("%v is leap year \n", year)
-				daysInmonth = 29
-			} else {
-				daysInmonth = 28
-			}
-
-		case 4, 6, 9, 11:
-			daysInmonth = 30
-
-		}
-		day := rand.Intn(daysInmonth) + 1
-		fmt.Println(era, year, month, day)
-		time.Sleep(time.Millisecond * 500)
+	if name == "wupeiqi" {
+		goto SVIP
+	} else if name == "yuanhao" {
+		goto VIP
 	}
+	fmt.Println("预约。。。。。。")
+VIP:
+	fmt.Println("等号。。。。。。。")
+SVIP:
+	fmt.Println("进入..........")
 }
