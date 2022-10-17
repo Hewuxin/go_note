@@ -16,4 +16,11 @@ func main() {
 	//lengthOfRune()
 	//stringMerge()
 	//stringIndex()
+	//userLogin()
+	//demo_2_20()
+	//demo_2_19()
+	//demo_2_18()
+	//demo_2_14()
+	//demo_2_5()
+	code_demo()
 }
