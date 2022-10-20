@@ -36,5 +36,16 @@ func main() {
 	//slice_10()
 	//slice_11()
 	//slice_func()
-	slice_func1()
+	//slice_func1()
+	Demo3()
+}
+
+func Demo3() {
+	fmt.Println("This is Demo3 ")
+	map_demo1()
+	map_demo2()
+	map_demo3()
+	map_demo4()
+	map_demo5()
+	map_demo6()
 }
