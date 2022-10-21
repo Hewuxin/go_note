@@ -131,3 +131,13 @@ func map_demo6() {
 	fmt.Println("v1: ", v1)
 	fmt.Println("v2: ", v2)
 }
+
+func Demo3() {
+	fmt.Println("This is Demo3 ")
+	map_demo1()
+	map_demo2()
+	map_demo3()
+	map_demo4()
+	map_demo5()
+	map_demo6()
+}
