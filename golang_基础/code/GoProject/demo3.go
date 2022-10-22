@@ -134,6 +134,7 @@ func map_demo6() {
 
 func Demo3() {
 	fmt.Println("This is Demo3 ")
+	descir_map()
 	map_demo1()
 	map_demo2()
 	map_demo3()

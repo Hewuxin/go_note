@@ -229,7 +229,7 @@ func structDemo9() {
 
 	p1 := Person{"hewuxin", 18, Address{"beijing", "china"}}
 	p2 := &p1
-	fmt.Println("p1 ", p1, "p1.address ", p1.address)
+	fmt.Println("p1 ", p1, "p1.address ", p1.address) //
 	fmt.Println("p2 ", p2, " *p2 ", *p2, "*p2.address", p2.address)
 	p3 := *p2
 	fmt.Println("p3 ", p3, p3.address)
@@ -241,6 +241,7 @@ func structDemo9() {
 
 func structDemo10() {
 	fmt.Println("This is structDemo10")
+	fmt.Println("本质上都拷贝了，只不过由于数据存储方式的不同，导致拷贝的有些是数据，有些是内存地址（指针）")
 	type Address struct {
 		city, state string
 	}
@@ -253,11 +254,13 @@ func structDemo10() {
 		address Address
 	}
 	p1 := Person{
-		name:   "hey",
-		age:    19,
-		hobby:  [2]string{"ba", "soc"},                                // 拷贝
-		num:    []int{1, 2, 3, 4, 5},                                  // 未拷贝  内部维护了指针指向数据存储的地方
-		parent: map[string]string{"father": "sda", "mother": "dasda"}, // 未拷贝  内部维护了指针指向数据存储的地方
+		name:  "hey",
+		age:   19,
+		hobby: [2]string{"ba", "soc"}, // 拷贝  重新拷贝一份所以当修改p1的hobby是 p2未发生改变
+		// num 未拷贝  内部维护了指针指向数据存储的地方  实际上也拷贝了 只是拷贝了num中保存的cap len aarray
+		num: []int{1, 2, 3, 4, 5},
+		// 未拷贝  内部维护了指针指向数据存储的地方 拷贝了map中的hmap和bmap
+		parent: map[string]string{"father": "sda", "mother": "dasda"},
 	}
 	p2 := p1
 
@@ -283,6 +286,7 @@ func structDemo10() {
 
 func structDemo11() {
 	fmt.Println("This is structDemo11")
+	fmt.Println("对于那些默认拷贝的情况，可改变为指针类型，让数据实现同步修改")
 	type Address struct {
 		city, state string
 	}
@@ -312,30 +316,36 @@ func structDemo11() {
 }
 
 func structDemo12() {
-	fmt.Println("This is structDemo12")
+	fmt.Println("This is function StructDemo12")
+	fmt.Println("结构体标签")
+
 	type Person struct {
-		name string "姓名"
-		age  int    "年龄"
+		name string "name"
+		age  int    "age"
 	}
 
-	p1 := Person{"heyuyang", 19}
-	plType := reflect.TypeOf(p1)
+	p1 := Person{"heyuyang", 18}
+	p1Type := reflect.TypeOf(p1)
+
 	// 方式1
-	field1 := plType.Field(0)
+	field1 := p1Type.Field(0)
 	fmt.Println(field1.Tag)
-	//方式2
-	field2, _ := plType.FieldByName("name")
-	fmt.Println(field2.Tag)
-	// 循环获取
-	fieldNum := plType.NumField()
-	for index := 0; index < fieldNum; index++ {
-		filed := plType.Field(index)
-		fmt.Println(filed.Name, filed.Tag)
-	}
 
+	// 方式2
+	field2, _ := p1Type.FieldByName("name")
+	fmt.Println(field2.Tag)
+
+	// 循环获取
+	fieldNum := p1Type.NumField()
+
+	for index := 0; index < fieldNum; index++ {
+		field := p1Type.Field(index)
+		fmt.Println(field.Tag)
+	}
 }
 
 func structDemo() {
 
-	structDemo9()
+	structDemo12()
+
 }
