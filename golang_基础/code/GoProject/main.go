@@ -8,5 +8,6 @@ func main() {
 	//pointerDemo()
 	//structDemo()
 	//StructPractice01()
-	StructPractice02()
+	//StructPractice02()
+	func_demo()
 }
