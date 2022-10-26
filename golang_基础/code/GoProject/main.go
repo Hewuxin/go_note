@@ -9,5 +9,8 @@ func main() {
 	//structDemo()
 	//StructPractice01()
 	//StructPractice02()
-	func_demo()
+	//func_demo()
+	//StructDemo2()
+	//interfaceDemo()
+	distribute()
 }

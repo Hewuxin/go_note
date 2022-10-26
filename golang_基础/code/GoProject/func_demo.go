@@ -13,9 +13,14 @@ func func_demo() {
 	//funcDemo6()
 	//funcDemo7()
 	//funcDemo8()
-	funcDemo9()
-	funcDemo10()
-
+	//funcDemo9()
+	//funcDemo10()
+	funcDemo11()
+	funcDemo12()
+	funcDemo13()
+	funcDemo14()
+	funcDemo15()
+	funcDemo16()
 }
 
 func add(num1 int, num2 int) (int, bool) {
@@ -191,39 +196,84 @@ func funcDemo10() {
 }
 
 func funcDemo11() {
-
-	// 存储着5个函数
-	var functionList []func()
+	fmt.Println("funcDemo11 闭包输出相同的值")
+	var functionList []func() // 函数内部的代码只有在执行函数时才执行
 
 	for i := 0; i < 5; i++ {
-		function := func() { // 函数内部的代码只有在执行函数时才执行
+		function := func() {
 			fmt.Println(i)
 		}
 		functionList = append(functionList, function)
 	}
-	//运行函数前，循环已经执行完i=5
-	functionList[0]() // 5
-	functionList[1]() // 5
-	functionList[2]() //
-
+	functionList[0]()
+	functionList[1]()
+	functionList[2]()
 }
 
 func funcDemo12() {
+	fmt.Println("funcDemo12 闭包输出不同的值")
 	var functionList []func()
-
 	for i := 0; i < 5; i++ {
 
-		// 定义了匿名函数:传入参数 arg int 返回值 函数  函数为匿名函数 打印arg
-		// 将i拷贝一份作为arg传入匿名函数
+		// 定义匿名函数：传入参数arg int 返回值 func() 匿名函数 函数体{fmt.Println(arg}
 		function := func(arg int) func() {
 			return func() {
 				fmt.Println(arg)
-
 			}
 		}(i)
 		functionList = append(functionList, function)
 	}
-	functionList[0]() // 0
-	functionList[1]() // 1
-	functionList[2]() // 2
+
+	functionList[0]()
+	functionList[1]()
+	functionList[2]()
+}
+
+func do() int {
+	fmt.Println("函数开始执行")
+	defer fmt.Println("函数执行完毕")
+	fmt.Println("函数内容是sss")
+	return 666
+}
+
+func funcDemo13() {
+	fmt.Println("funcDemo13 defer 用于在一个函数执行完成之后自动触发的语句，一般用于结束操作之后释放资源")
+	fmt.Println("在函数return之后/执行结束之前自动调用defer语句")
+	ret := do()
+	fmt.Println(ret)
+}
+
+func fileIO() int {
+	fmt.Println("feng chui")
+	defer fmt.Println("函数执行完毕")
+	defer fmt.Println("函。。。。。。")
+	fmt.Println("pipiliang")
+	return 666
+}
+
+func funcDemo14() {
+	fmt.Println("funcDemo14 多个defer语句按编写顺序倒序执行")
+	ret := fileIO()
+	fmt.Println(ret)
+}
+
+func after() int {
+	fmt.Println("after 函数开始执行")
+	defer do()
+	fmt.Println("after 函数执行完毕")
+	return 111
+}
+
+func funcDemo15() {
+	fmt.Println("funcDemo15 defer 后面也可以跟函数 参数等")
+	ret := after()
+	fmt.Println(ret)
+}
+
+func funcDemo16() {
+	fmt.Println("funcDemo16 自动执行函数")
+	result := func(arg int) int {
+		return arg + 100
+	}(100)
+	fmt.Println(result)
 }
