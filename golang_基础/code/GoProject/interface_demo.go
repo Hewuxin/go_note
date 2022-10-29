@@ -24,7 +24,7 @@ func interfaceDemo() {
 	//interDemo1()
 	//interDemo2()
 	//interDemo3()
-	interDemo4()
+	//interDemo4()
 }
 
 // Base1 定义空接口
@@ -145,3 +145,5 @@ func interDemo4() {
 	fmt.Println("user: ", user)
 	InterSomeThing(user)
 }
+
+//

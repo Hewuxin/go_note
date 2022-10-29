@@ -12,5 +12,11 @@ func main() {
 	//func_demo()
 	//StructDemo2()
 	//interfaceDemo()
-	distribute()
+	//interFaceDemo()
+	//strconvDemo()
+	//jsonMarshalDemo()
+	//packageDemo1()
+	//packageDemo2()
+	packageDemo3()
+	packageDemo4()
 }
