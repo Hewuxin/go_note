@@ -17,6 +17,9 @@ func main() {
 	//jsonMarshalDemo()
 	//packageDemo1()
 	//packageDemo2()
-	packageDemo3()
-	packageDemo4()
+	//packageDemo3()
+	//packageDemo4()
+
+	//packageDemo5()
+	//packageDemo6()
 }

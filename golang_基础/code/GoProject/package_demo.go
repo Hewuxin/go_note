@@ -2,10 +2,14 @@ package main
 
 import (
 	"encoding/json"
+	"flag"
 	"fmt"
 	"io/ioutil"
 	"net/http"
+	"os"
+	"path"
 	"reflect"
+	"regexp"
 	"strconv"
 	"time"
 )
@@ -181,4 +185,98 @@ func packageDemo4() {
 	fmt.Println("时间间隔小时: ", t8.Hours())
 	fmt.Println("时间间隔分钟: ", t8.Minutes())
 	fmt.Println("时间间隔秒: ", t8.Seconds())
+}
+
+func packageDemo5() {
+	fmt.Println("packageDemo6 基于os.Args可以获取传入的所有参数: ")
+	fmt.Println(os.Args)
+}
+
+func packageDemo6() {
+	fmt.Println("packageDemo6 从命令行获取参数 ")
+	host := flag.String("h", "127.0.0.1", "主机名")
+	port := flag.Int("p", 8080, "端口")
+
+	var email string
+	flag.StringVar(&email, "e", "", "邮箱")
+
+	flag.Parse()
+	fmt.Println(*port, *host, email)
+}
+
+func packageDemo7() {
+	fmt.Println("正则表达式的知识:")
+	fmt.Println("Go中正则相关的包：regexp的功能。")
+
+	// 1. 根据字符串匹配
+	m2, _ := regexp.MatchString("foo.*", "seafood")
+	fmt.Println("根据字符串匹配: ", m2)
+}
+
+func packageDemo8() {
+	// 创建单级目录，已存在则err有错
+	err := os.Mkdir("packDemo", 0755)
+	fmt.Println(err)
+
+	// 创建多级目录，已存在报错
+	err1 := os.MkdirAll("packDemo1/demo1", 0755)
+	fmt.Println(err1)
+
+	// 创建单级目录方法2
+	if err := os.Mkdir("x2", 0755); err == nil {
+		fmt.Println("文件夹创建成功")
+	} else {
+		fmt.Println(err)
+	}
+
+	// 创建多级目录方法2
+	if err := os.MkdirAll("packDemo2/demo2", 0755); err == nil {
+		fmt.Println("多级文件夹创建成功")
+	} else {
+		fmt.Println(err)
+	}
+
+}
+
+func packageDemo9() {
+	//删除文件和文件夹
+	fmt.Println("删除文件和文件夹")
+	if err := os.Remove("dele.go"); err == nil {
+		fmt.Println("删除成功")
+	} else {
+		fmt.Println(err)
+	}
+
+	if err := os.Remove("packDemo"); err == nil {
+		fmt.Println("单级目录删除成功")
+	} else {
+		fmt.Println(err)
+	}
+
+	if err := os.RemoveAll("packDemo2/demo2"); err == nil {
+		fmt.Println("多级目录删除成功")
+	} else {
+		fmt.Println(err)
+	}
+}
+
+func packageDemo10() {
+	fmt.Println("判断文件或文件夹是否存在")
+	_, err := os.Stat("packDemo2/demo2")
+	if err != nil {
+		if os.IsNotExist(err) {
+			fmt.Println("文件或文件夹不存在")
+		}
+	} else {
+		fmt.Println("文件或文件夹存在")
+	}
+}
+
+func packageDemo11() {
+	fmt.Println("路径拼接")
+	filePath := path.Join("v1", "v2", "v3", "v4", "v6.exe")
+	filePath1 := path.Join("v1", "v2", "v3/v4", "v6.exe")
+
+	fmt.Println("filePath: ", filePath)
+	fmt.Println("filePath1: ", filePath1)
 }
