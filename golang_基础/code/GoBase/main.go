@@ -4,5 +4,16 @@ func main() {
 	//structrDemo()
 	//ocpDemo()
 	//OopTestDemo()
-	superTest()
+	//superTest()
+	//RoutineTest()
+	//ChannelTest()
+	//WaitGroupTest()
+	//WaitGroupTest1()
+	//GoschedTest()
+	//GoexitTest()
+	//GoMaxProcsTest()
+	//ChannelTest01()
+	//ChannelTest02()
+	//ChannelTest03()
+	
 }
