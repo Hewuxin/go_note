@@ -15,5 +15,9 @@ func main() {
 	//ChannelTest01()
 	//ChannelTest02()
 	//ChannelTest03()
-	
+	//SelectTest()
+	//NewTimerTest()
+	//NewTimerTest1()
+	//TimerAfterTest()
+	TimerAfterTest1()
 }
